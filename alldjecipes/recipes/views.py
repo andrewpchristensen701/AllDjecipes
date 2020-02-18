@@ -43,6 +43,8 @@ class AddRecipe(View):
                     creator=request.user,
                     recipe_name=data['recipe_name'],
                     difficulty=data['difficulty'],
+                    vegitarian=data['vegitarian'],
+                    vegan=data['vegan'],
                     category=data['category'],
                     ingredients=data['ingredients'],
                     instructions=data['instructions'],

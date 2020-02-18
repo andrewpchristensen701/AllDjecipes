@@ -61,6 +61,13 @@
         {% if not recipe.difficulty %}
             <h3>Difficulty: Easy</h3>
         {% endif %}
+
+        {% if recipe.vegitarian %}
+            <h3>Vegitarian meal!</h3>
+        {% endif %}
+        {% if recipe.vegan %}
+            <h3>Vegan meal!</h3>
+        {% endif %}
         <h3>Time: {{recipe.completion_time}}</h3>
         <div class="accordion" id="accordionExample">
             <div class="card">

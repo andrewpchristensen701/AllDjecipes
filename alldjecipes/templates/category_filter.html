@@ -53,10 +53,16 @@
 {% endif %}
 {% for item in category_item %}
     <ul>
-    <img src='{{ item.image.url }}'height="auto" width="45" style="border-radius:100000px">  <a href='/recipe/{{item.id}}/'>{{item.recipe_name}}</a> <br> Overall: 
+    <img src='{{ item.image.url }}'height="auto" width="45" style="border-radius:100000px">  <a href='/recipe/{{item.id}}/'>{{item.recipe_name}}</a>
+    
+    <br> Overall: 
     {% if item.total > 0 %} Liked! {% endif %} 
     {% if item.total == 0 %} Not rated {% endif %} 
     {% if item.total < 0 %} Not well liked {% endif %}
+    <br>
+    {% if item.vegitarian %} vgt {% endif %}
+    {% if item.vegan %} vgn {% endif %}
+
     </ul>
 {% endfor %}
 
