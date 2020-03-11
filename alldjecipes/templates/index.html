@@ -7,9 +7,10 @@
     <title>AllDjecipes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body style="margin-left:50px; margin-right:50px; margin-top:20px; border-radius:10px">
+<body style="margin-left:50px; margin-right:50px; margin-top:20px; margin-bottom:20px;border-radius:10px">
 <div style='padding:5px;'>
 <img class='img-responsive' src='../../media/images/defaultimage.jpeg' height="auto" width="300px" align='right'><h1><i>AllDjecipes - The Real Cooking Network</i></h1>
+<h4>Total Recipes: {{ recipecount }} </h4>
 {% if  user.username  != ''%}
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
@@ -52,6 +53,7 @@
 <h2>Hello, There!<h2>
 {% endif %}
 <h4>Select a category to browse</h4>
+<h3>
 <a href='/category/breakfast/'>Breakfast</a>
 <br>
 <a href='/category/brunch/'>Brunch</a>
@@ -64,6 +66,7 @@
 <br>
 <a href='/category/dessert/'>Dessert</a>
 <br>
+</h3>
 </div>
 </body>
 </html>

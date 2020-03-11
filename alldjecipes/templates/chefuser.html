@@ -7,7 +7,7 @@
     <title>AllDjecipes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body style="margin-left:50px; margin-right:50px; margin-top:20px; border-radius:10px">
+<body style="margin-left:50px; margin-right:50px; margin-top:20px; margin-bottom:20px;border-radius:10px">
 <div style='padding:5px;'>
 <img src='../../media/images/defaultimage.jpeg' height="auto" width="300px" align='right'><h1><i>AllDjecipes - The Real Cooking Network</i></h1>
 {% if  user.username  != ''%}
@@ -49,13 +49,13 @@
 </ol>
 </nav>
 {% endif %}
-<h1>{{ chefuser.firstname}}  {{chefuser.lastname}}</h1>
+<h1>{{ chefuser.first_name}}  {{chefuser.last_name}}</h1>
 <br>
 <h2>{{chefuser.username}}<h2>
 <h2>{{ chefuser.email }}</h2>
 <strong>Recipe Count: {{recipes.all.count}}</strong>
 <br>
-<strong>Recipe List:</strong>
+<strong>Recipe List:</strong> {% if not recipes%} None yet.  Get to cookin! {% endif %}
 {% for recipe in recipes %}
 <ul>
     <li><a href = "/recipe/{{recipe.id}}">{{recipe.recipe_name}}</a></li>

@@ -9,7 +9,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     </head>
-    <body style="margin-left:50px; margin-right:50px; margin-top:20px; border-radius:10px">
+    <body style="margin-left:50px; margin-right:50px; margin-top:20px; margin-bottom:20px;border-radius:10px">
         <div style='padding:5px;'>
             <img src='../../media/images/defaultimage.jpeg' height="auto" width="300px" align='right'><h1><i>AllDjecipes - The Real Cooking Network</i></h1>
             {% if  user.username  != ''%}
@@ -55,11 +55,18 @@
             <h2>{{ recipe }}</h2> by {{recipe.creator}}
         </div>
         <img src='{{ recipe.image.url }}'>
-        {% if recipe.difficulty_level %}
+        {% if recipe.difficulty %}
+            <h3>Difficulty: Hard</h3>
+        {% endif %}
+        {% if not recipe.difficulty %}
             <h3>Difficulty: Easy</h3>
         {% endif %}
-        {% if not recipe.difficulty_level %}
-            <h3>Difficulty: Hard</h3>
+
+        {% if recipe.vegitarian %}
+            <h3>Vegitarian meal!</h3>
+        {% endif %}
+        {% if recipe.vegan %}
+            <h3>Vegan meal!</h3>
         {% endif %}
         <h3>Time: {{recipe.completion_time}}</h3>
         <div class="accordion" id="accordionExample">
@@ -112,13 +119,13 @@
         <br>
         <a href='/recipeupvote/{{recipe.id}}'>
             <button type="button" class="btn btn-success">
-                C'est Bon!
+                Is good
             </button>
         </a>
         {{ recipe.total }}
         <a href='/recipedownvote/{{recipe.id}}'>
             <button type="button" class="btn btn-danger">
-                C'est Ordures
+                No good
             </button>
         </a>
         <br>
@@ -143,13 +150,13 @@
                     <p>
                     <a href='/commentupvote/{{comment.id}}'>
                         <button type="button" class="btn btn-success">
-                            C'est Bon!
+                            Is good.
                         </button>
                     </a>
                     {{ comment.total }}
                     <a href='/commentdownvote/{{comment.id}}'>
                         <button type="button" class="btn btn-danger">
-                            C'est Ordures
+                            No good
                         </button>
                     </a>
                     <br>

@@ -7,7 +7,7 @@
     <title>AllDjecipes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body style="margin-left:50px; margin-right:50px; margin-top:20px; border-radius:10px">
+<body style="margin-left:50px; margin-right:50px; margin-top:20px; margin-bottom:20px;border-radius:10px">
 <div style='padding:5px;'>
 <img src='../../media/images/defaultimage.jpeg' height="auto" width="300px" align='right'><h1><i>AllDjecipes - The Real Cooking Network</i></h1>
 {% if  user.username  != ''%}
@@ -49,14 +49,20 @@
   </li>
 </ol>
 </nav>
-<h2>Hello, There!<h2>
+<h2>Hello, There!</h2>
 {% endif %}
 {% for item in category_item %}
     <ul>
-    <img src='{{ item.image.url }}'height="auto" width="45" style="border-radius:100000px">  <a href='/recipe/{{item.id}}/'>{{item.recipe_name}}</a> <br> Overall: 
+    <img src='{{ item.image.url }}'height="auto" width="45" style="border-radius:100000px">  <a href='/recipe/{{item.id}}/'>{{item.recipe_name}}</a>
+    
+    <br> Overall: 
     {% if item.total > 0 %} Liked! {% endif %} 
     {% if item.total == 0 %} Not rated {% endif %} 
     {% if item.total < 0 %} Not well liked {% endif %}
+    <br>
+    {% if item.vegitarian %} vgt {% endif %}
+    {% if item.vegan %} vgn {% endif %}
+
     </ul>
 {% endfor %}
 

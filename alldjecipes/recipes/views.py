@@ -5,14 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from alldjecipes.recipes.forms import CommentForm, RecipeForm
 from alldjecipes.recipes.models import Recipe, Comment, Vote
-from alldjecipes.users.models import ChefUser
+from alldjecipes.recipes.models import ChefUser
 from alldjecipes.helpers.helper import voting_helper
 
 
 def index(request):
     html = "index.html"
     recipe = Recipe.objects.all()
-    return render(request, html, {"recipe": recipe})
+    numberrecipes = Recipe.objects.count()
+    return render(request, html, {"recipe": recipe, 'recipecount': numberrecipes})
 
 
 def recipe_detail(request, id):
@@ -42,7 +43,9 @@ class AddRecipe(View):
                 new_recipe = Recipe.objects.create(
                     creator=request.user,
                     recipe_name=data['recipe_name'],
-                    difficulty_level=data['difficulty_level'],
+                    difficulty=data['difficulty'],
+                    vegitarian=data['vegitarian'],
+                    vegan=data['vegan'],
                     category=data['category'],
                     ingredients=data['ingredients'],
                     instructions=data['instructions'],
@@ -77,7 +80,7 @@ class AddComment(View):
 
 def filter_by_category(request, param):
     html = 'category_filter.html'
-    category_items =  Recipe.objects.filter(category=param.lower().title())
+    category_items =  Recipe.objects.filter(category=param.lower().title()).order_by('-date')
     return render(request, html, {'category_item': category_items})
 
 
@@ -119,3 +122,8 @@ def edit_recipe_view(request,id):
         return HttpResponse("You can't do that")
     form = RecipeForm(instance=instance)
     return render(request, html, {'form': form})
+
+def number_of_recipes(request):
+    allrecipes = Recipe.objects.all()
+    numberrecipes = Recipe.objects.count()
+    return render(request, './templates/index.html', {'recipes': allrecipes, 'recipecount': numberrecipes})

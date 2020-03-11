@@ -5,8 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class ChefUser(AbstractUser):
-    firstname = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
+    pass
 
     def __str__(self):
         return f'{self.username}'

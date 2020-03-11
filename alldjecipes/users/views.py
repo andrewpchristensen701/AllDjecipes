@@ -17,8 +17,8 @@ class AddUser(View):
             if form.is_valid():
                 data = form.cleaned_data
                 new_recipe = ChefUser.objects.create_user(
-                    firstname=data['firstname'],
-                    lastname=data['lastname'],
+                    first_name=data['first_name'],
+                    last_name=data['last_name'],
                     email=data['email'],
                     username=data['username'],
                     password=data['password'],
@@ -36,5 +36,9 @@ def user_view(request, id):
 
 def all_users_view(request):
     html = 'allusers.html'
-    chefuser = ChefUser.objects.all()
-    return render(request, html, {'chefusers':chefuser})
+    chefuser = ChefUser.objects.all().order_by('date_joined')
+    numberusers = ChefUser.objects.count()
+    return render(request, html, {'chefusers':chefuser, 'usercount': numberusers})
+
+
+    

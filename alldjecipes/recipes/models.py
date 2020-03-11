@@ -14,7 +14,10 @@ class Recipe(models.Model):
     completion_time = models.CharField(max_length=50)
     ingredients = models.TextField(blank=False)
     instructions = models.TextField(blank=False)
-    difficulty_level = models.BooleanField(default=True)
+    difficulty = models.BooleanField(default=True)
+    vegitarian = models.BooleanField(default=False)
+    vegan = models.BooleanField(default=False)
+    
     APPETIZER = 'Appetizer'
     BREAKFAST = 'Breakfast'
     BRUNCH = 'Brunch'
