@@ -53,6 +53,7 @@
 
 
 <h2>OurCommunity of Creators</h2>
+<h4>Total Chefs: {{ usercount }}</h4>
 {% for thing in chefusers %}
         <a href='/chefuser/{{thing.id}}'><h3>{{thing}} </h3></a><br>
 {% endfor %}

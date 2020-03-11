@@ -12,7 +12,8 @@ from alldjecipes.helpers.helper import voting_helper
 def index(request):
     html = "index.html"
     recipe = Recipe.objects.all()
-    return render(request, html, {"recipe": recipe})
+    numberrecipes = Recipe.objects.count()
+    return render(request, html, {"recipe": recipe, 'recipecount': numberrecipes})
 
 
 def recipe_detail(request, id):
@@ -125,4 +126,4 @@ def edit_recipe_view(request,id):
 def number_of_recipes(request):
     allrecipes = Recipe.objects.all()
     numberrecipes = Recipe.objects.count()
-    return render(request, 'AllDjecipes/alldjecipes/templates/index.html', {'recipes': allrecipes, 'recipecount': numberrecipes})
+    return render(request, './templates/index.html', {'recipes': allrecipes, 'recipecount': numberrecipes})

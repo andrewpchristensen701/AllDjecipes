@@ -37,10 +37,8 @@ def user_view(request, id):
 def all_users_view(request):
     html = 'allusers.html'
     chefuser = ChefUser.objects.all().order_by('date_joined')
-    return render(request, html, {'chefusers':chefuser})
-
-def number_of_users(request):
-    allusers = ChefUser.objects.all()
     numberusers = ChefUser.objects.count()
-    return render(request, 'AllDjecipes/alldjecipes/templates/index.html', {'users': allusers, 'usercount': numberusers})
+    return render(request, html, {'chefusers':chefuser, 'usercount': numberusers})
+
+
     
