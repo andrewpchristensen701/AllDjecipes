@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from alldjecipes.recipes.forms import CommentForm, RecipeForm
 from alldjecipes.recipes.models import Recipe, Comment, Vote
-from alldjecipes.users.models import ChefUser
+from alldjecipes.recipes.models import ChefUser
 from alldjecipes.helpers.helper import voting_helper
 
 
@@ -121,3 +121,8 @@ def edit_recipe_view(request,id):
         return HttpResponse("You can't do that")
     form = RecipeForm(instance=instance)
     return render(request, html, {'form': form})
+
+def number_of_recipes(request):
+    allrecipes = Recipe.objects.all()
+    numberrecipes = Recipe.objects.count()
+    return render(request, 'AllDjecipes/alldjecipes/templates/index.html', {'recipes': allrecipes, 'recipecount': numberrecipes})
